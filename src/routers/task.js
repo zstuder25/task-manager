@@ -7,7 +7,7 @@ router.post('/tasks', async (req, res) => {
 
     try {
         await task.save()
-        res.status(201).send()
+        res.status(201).send(task)
     } catch (e) {
         res.status(400).send()
     }
@@ -49,10 +49,13 @@ router.patch('/tasks/:id', async (req, res) => {
     }
 
     try{
-        const task = await Task.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true})
+        const task = await Task.findById(req.params.id)
         if(!task){
             return res.status(404).send()
         }
+        updates.forEach( item => task[item] = req.body[item] )
+        await task.save()
+
         res.send(task)
     } catch (e) {
         res.status(400).send()
