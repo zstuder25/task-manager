@@ -14,14 +14,14 @@ app.listen(port, () => {
     console.log("Server is up on port " + port)
 })
 
-const jwt = require('jsonwebtoken')
-
-const myFunc = async () => {
-    const token = jwt.sign({ _id: 'abc123' }, 'thisismynewcorse', { expiresIn: '7 days' })
-    console.log(token)
-
-    const data = jwt.verify(token, 'thisismynewcorse')
-    console.log(data)//dfkjdlfd
-}
-
-myFunc()
+// const jwt = require('jsonwebtoken')
+//
+// const myFunc = async () => {
+//     const token = jwt.sign({ _id: 'abc123' }, 'thisismynewcorse', { expiresIn: '7 days' })
+//     console.log(token)
+//
+//     const data = jwt.verify(token, 'thisismynewcorse')
+//     console.log(data)//dfkjdlfd
+// }
+//
+// myFunc()
